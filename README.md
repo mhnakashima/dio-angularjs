@@ -1,2 +1,2 @@
 # dio-angularjs
-I created this repository for the first topic on Digital Innovation One Course
+Digital Innovation One base angularjs repository
