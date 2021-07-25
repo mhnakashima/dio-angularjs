@@ -1,0 +1,94 @@
+<div class="container-xxl" ng-if="coin">
+  <div class="row pv6">
+    <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xxl-3">
+      <header class="tc pv4 pv5-ns">
+        <img
+          ng-src="{{coin.image}}"
+          class="br-100 ba b--black-10 h3 w3"
+          alt="avatar"
+        />
+        <h1 class="f5 f4-ns fw6 mid-gray">{{coin.name}} | {{coin.symbol}}</h1>
+        <h2 class="f6 gray fw2 ttu tracked">{{coin.last_updated | date}}</h2>
+      </header>
+    </div>
+
+    <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xxl-9">
+      <div class="row mv3">
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Preço</span>
+            <h3 class="f5 fs-normal measure-wide">
+              {{coin.current_price | currency : 'R$ '}}
+            </h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Máxima (24hrs)</span>
+            <h3 class="f5 fs-normal measure-wide">
+              {{coin.high_24h | currency : 'R$ '}}
+            </h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Mínima (24hrs)</span>
+            <h3 class="f5 fs-normal measure-wide">
+              {{coin.low_24h | currency : 'R$ '}}
+            </h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Rank</span>
+            <h3 class="f5 fs-normal measure-wide">{{coin.market_cap_rank}}</h3>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mv3">
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Market capt.</span>
+            <h3 class="f5 fs-normal measure-wide">{{coin.market_cap}}</h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Mkt capt. (24hrs)</span>
+            <h3 class="f5 fs-normal measure-wide">
+              {{coin.market_cap_change_24h | number: 2}}
+            </h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Mkt capitalization (%)</span>
+            <h3 class="f5 fs-normal measure-wide">
+              {{coin.market_cap_change_percentage_24h | number: 2}}
+            </h3>
+          </div>
+        </div>
+  
+        <div class="col-3">
+          <div class="card pa3">
+            <span class="b">Volume</span>
+            <h3 class="f5 fs-normal measure-wide">{{coin.total_volume}}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-12 tr">
+      <a ui-sref="dashboard" class="btn btn-primary">Voltar</a>
+    </div>
+  </div>
+</div>

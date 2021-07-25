@@ -1,0 +1,75 @@
+<div class="container-xxl">
+
+  <div class="mt3 f4 measure-wide">
+    Você pode conhecer cada criptomoeda clicando em cada uma delas
+  </div>
+
+  <div class="row mv4" ng-if="coins">
+    <div class="col-12">
+      <div class="fl w-30">
+        <div class="tl">
+          <input placeholder="Filtrar criptomoeda" class="form-control" type="text" ng-model="search" ng-change="applyFilter(search)" />
+        </div>
+      </div>
+      <div class="fl items-center w-70 tr">
+        <span>Ordenar por: {{propertyOrder}} </span>
+        <button ng-if="!propertyOrder" ng-click="orderBy('name');" type="button" class="btn btn-primary btn-sm">Nome</button>
+        <button ng-if="!propertyOrder" ng-click="orderBy('current_price');" type="button" class="btn btn-primary btn-sm">Preço</button>
+        <button ng-if="propertyOrder"  ng-click="orderBy('');" type="button" class="btn btn-primary btn-sm">Resetar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row row-eq-height" ng-if="coins">
+    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mb4" ng-repeat="coin in bufferCoins | orderBy:propertyOrder:reverse ">
+      <a ui-sref="detail({name: coin.name})" href="#" class="card pa4 black no-underline">
+        <div
+          ng-style="{'background-image': 'url({{coin.image}})'}"
+          class="card-img-top img-responsive card-image"
+          alt="{{coin.name}}"
+        ></div>
+        <div class="mv2 f5 measure">
+          <div class="fl w-60">
+            <div class="tl">{{coin.name}}</div>
+          </div>
+          <div class="fl w-40 ttu">
+            <div class="tr">{{coin.symbol}}</div>
+          </div>
+        </div>
+        <div class="card-body tl ph0">
+          <span class="f6 fs-normal measure-wide">PREÇO DO ATIVO</span>
+          <div class="fl f4 w-70 b">
+            {{coin.current_price | currency : 'R$ '}}
+          </div>
+          <div class="fl f6 w-30 tr">
+            {{coin.market_cap_change_percentage_24h}}
+          </div>
+        </div>
+
+        <div class="mt3">
+          <div class="fl w-50">
+            <div class="tl">Máxima (24hrs):</div>
+          </div>
+          <div class="fl w-50">
+            <div class="tr dark-blue">{{coin.high_24h | currency : 'R$'}}</div>
+          </div>
+        </div>
+
+        <div class="mt0">
+          <div class="fl w-50">
+            <div class="tl">Minima (24hrs):</div>
+          </div>
+          <div class="fl w-50">
+            <div class="tr dark-blue">{{coin.low_24h | currency : 'R$'}}</div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="row mv4" ng-if="bufferCoins.length != 0">
+    <div class="col-12 tc">
+      <button ng-click="loadMore()" class="btn btn-primary">Carregar Mais</button>
+    </div>
+  </div>
+</div>
